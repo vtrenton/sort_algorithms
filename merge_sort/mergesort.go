@@ -20,9 +20,17 @@ func mergesort(list []int) []int {
 	sortedleft := mergesort(left)
 	sortedright := mergesort(right)
 
-	return merge(sortedleft, right)
+	return merge(sortedleft, sortedright)
 }
 
 func merge(left, right []int) []int {
-
+	var val []int
+	if left[0] < right[0] {
+		left := append(left, right[0])
+		val = left
+	} else {
+		right := append(right, left[0])
+		val = right
+	}
+	return val
 }
